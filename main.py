@@ -218,7 +218,7 @@ while True:
             new_house_card = list(house_player.hit_or_pass(house_hand_value, deck_dict))
             house_hand_value += deck_dict_2[new_house_card[0]]
             temp_string = new_house_card[0]
-            suite = temp_string[0]
+            suite = temp_string[2]
             card_1.card_representation(deck_dict_2[new_house_card[0]], suite, deck_dict_2[new_house_card[0]])
             del deck_dict[new_house_card[0]]
 
