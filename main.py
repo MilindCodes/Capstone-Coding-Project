@@ -72,6 +72,9 @@ rules_of_black_jack()
 Start of the game
 '''
 
+games_played = 0 # THIS KEEPS TRACK OF THE GAMES PLAYED BY THE PLAYER. IT INCRIMENTS ONE EACH TIME THE PLAYER CHOOSES TO PLAY AGAIN
+house_won = 0 # THIS KEEPS TRACK OF HOW MANY GAMES THE HOUSE WON. WE CAN KNOW THE NUMBER OF GAMES THE PLAYER WON BY SUBTRACTING THIS NUMBER BY games_played
+
 # THIS IS THE MAIN PART OF THE GAME. 
 while True:
     house_bust = False
@@ -94,6 +97,7 @@ while True:
     else:
 
         # THIS IS GETTING THE TWO INITIAL CARDS FOR THE HOUSE
+        games_played += 1 # THIS MAKES SURE THE NUMBER OF GAMES PLAYED IS KEPT TRACK OF.
         house_player = House()
         house_init_tuple = house_player.house_initial(deck_dict)
         
@@ -145,7 +149,11 @@ while True:
 
         print()
         print()
-        clear()
+
+        is_lucky = input("Are you feeling lucky? If yes [Y], you'll double your wager. If not [N], you won't. Enter [Y] or [N]: ")
+
+        print()
+        print()
 
         #GIVING THE PLAYER THE OPTION TO GET HIT OR NOT (Sorry, I do not know the nomenclature for Black Jack)
         while True:
@@ -235,7 +243,11 @@ while True:
                 print("THE PLAYER HAS WON")
             elif player_bust == True and house_bust == False:
                 print("THE HOUSE HAS WON")
+                house_won += 1
             elif player_bust == False and house_bust == True:
                 print("THE PLAYER HAS WON")
             elif (player_bust == False and house_bust == False) and (player_hand_value < house_hand_value):
-                print("THE HOUES HAS WON")
+                print("THE HOUSE HAS WON")
+                house_won += 1
+    
+        print(games_played)

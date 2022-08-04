@@ -11,5 +11,6 @@ def __init__(self) -> None:
     bank_account = 10000 # THE PLAYER WILL START OUT WITH 10,000 DOLLARS TO GAMBLE WITH
 
 
-def wager(self) -> int:
+def wager(self, is_lucky, random_draw) -> int: # is_lucky = IS THE PLAYER FEELING LUCKY. IF SO, THE HOUSE WAGERS LESS. random_draw = AROUND EVERY 1/5 OF THE TIME THE CASINO DOUBLES THE BET.
     pass
+
