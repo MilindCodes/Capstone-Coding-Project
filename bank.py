@@ -13,4 +13,3 @@ def __init__(self) -> None:
 
 def wager(self, is_lucky, random_draw) -> int: # is_lucky = IS THE PLAYER FEELING LUCKY. IF SO, THE HOUSE WAGERS LESS. random_draw = AROUND EVERY 1/5 OF THE TIME THE CASINO DOUBLES THE BET.
     pass
-

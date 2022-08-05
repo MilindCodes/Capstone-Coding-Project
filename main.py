@@ -108,13 +108,18 @@ while True:
 
         # FETCHING AND SHOWING THE CURRENT CARDS OF THE HOUSE
         print("HOUSES CARDS: ")
+        temp_counter = 0
         for card_ in house_init_tuple:
-            house_hand[card_] = deck_dict[card_]
-            new_dict = {card_ : deck_dict[card_]}
-            temp_list = card_.split("_")
-            suite = temp_list[2]
-            card.card_representation(deck_dict[card_], suite[0], deck_dict[card_])
-            house_hand_value += deck_dict[card_]
+            if temp_counter == 0:
+                house_hand[card_] = deck_dict[card_]
+                new_dict = {card_ : deck_dict[card_]}
+                temp_list = card_.split("_")
+                suite = temp_list[2]
+                card.card_representation(deck_dict[card_], suite[0], deck_dict[card_])
+                house_hand_value += deck_dict[card_]
+            else:
+                card.card_representation_dealer_init()
+            temp_counter += 1
 
         # DELETING THE CARDS THE HOUSE GOT FROM THE DICTIONARY
         for card in house_init_tuple:

@@ -109,10 +109,10 @@ class Card():
         print(card_list_three)
         print()
     
-    def card_representation_dealer_init(self, value: int, suite: str, num: int) -> None:
+    def card_representation_dealer_init(self) -> None: # THIS IS TO HIDE THE SECOND INITIAL CARD OF THE DEALER
         card_list_one = ["----"]
         card_list_two = ["-??-"]
-        card_list_three = ["----    Value = {}".format(num)]
+        card_list_three = ["----    Value = Who knows..."] 
 
         print(card_list_one)
         print(card_list_two)
