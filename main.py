@@ -1,7 +1,12 @@
 import os
 from tkinter import Y
-
+from bank import Bank
 from player import Player
+import random
+from configparser import MAX_INTERPOLATION_DEPTH
+from sre_constants import CATEGORY_DIGIT
+from card import Card
+from house import House
 
 
 '''
@@ -44,11 +49,7 @@ hit_or_not =
 
 
 # This function is used to give the rules of Black Jack. It will be used every time the player chooses to see the rules of black jack again
-from configparser import MAX_INTERPOLATION_DEPTH
-from sre_constants import CATEGORY_DIGIT
 
-from card import Card
-from house import House
 
 
 def rules_of_black_jack():
@@ -60,6 +61,7 @@ def rules_of_black_jack():
     print("2) The dealer will one card face up and one card face down")
     print("3) You can choose to recieve cards (called 'Hit me') or stay (called 'Stay') based on the goal of 21")
     print("4) The goal of Black Jack is to get cards toatalling in value 21. If you go over you bust. Whoever is closer to 21 (but not bust) winst the game \n")
+    print("5) As a player you start out with $10,000. Good for you!")
 
 '''
 Introduction of the game
@@ -154,8 +156,22 @@ while True:
 
         print()
         print()
-
-        is_lucky = input("Are you feeling lucky? If yes [Y], you'll double your wager. If not [N], you won't. Enter [Y] or [N]: ")
+        bank_object = Bank()
+        # WAGER
+        while True:
+            
+            # THE USER BETTING
+            print("TIME TO BET:")
+            is_lucky = input("Are you feeling lucky? If yes [Y], you'll double your wager. If not [N], you won't. Enter [Y] or [N]: ")
+            player_wager = int(input("Enter your wager: ")) # ENTER SOME ERROR HANDELING SO THAT THE USER CAN'T ENTER A NUMBER LARGER THAN 10,000
+            
+            # THE HOUSE BETTING
+            print("The house wagers ")
+            house_rand_num = random.randint(1, 5)
+            house_wager = bank_object.wager(is_lucky, house_rand_num, house_hand_value)
+            if(player_wager > 10000):
+                print("Please enter a value less than $10,000. You only have $10,000")
+            break
 
         print()
         print()
